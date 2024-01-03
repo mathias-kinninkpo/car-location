@@ -1,0 +1,17 @@
+body {
+    font-family: 'Arial', sans-serif;
+    font-size: 22px ;
+}
+
+.header{
+    font-weight: bold;
+    background-color: green;
+    color: white;
+}
+.footer-bg {
+    background-color: #6f6e6e !important;
+    color: white !important;
+}
+.color-bg {
+    background-color: green !important;
+}

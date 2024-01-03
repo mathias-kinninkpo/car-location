@@ -22,6 +22,7 @@ use App\Http\Controllers\RentalController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ContactController;
 
 // Page d'accueil
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -39,6 +40,7 @@ Route::get('/rentals', [RentalController::class, 'index'])->name('rentals.index'
 Route::get('/rentals/create', [RentalController::class, 'create'])->name('rentals.create');
 Route::post('/rentals', [RentalController::class, 'store'])->name('rentals.store');
 
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 
 // Routes pour l'authentification et les profils
 Route::get('/register', [RegisterController::class, 'create'])->name('register.create');
