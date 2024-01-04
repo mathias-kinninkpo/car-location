@@ -6,11 +6,11 @@
     <title>CarLocation</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Ajoutez votre fichier CSS personnalisé -->
     <link rel="stylesheet" href="css/index.css">
-
 </head>
-<body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-light header">
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top header color-bg">
         <div class="d-flex align-items-center m-auto" style="width: 80%">
             <div style="width: 80%">
                 <a class="navbar-brand text-white" href="{{ route('home') }}">CAR LOCATION</a>
@@ -27,14 +27,14 @@
                     <li class="nav-item {{ request()->is('cars*') ? 'active' : '' }}">
                         <a class="nav-link text-white" href="{{ route('cars.index') }}">Voitures</a>
                     </li>
-                    <li class="nav-item {{ request()->is('contact*') ? 'active' : '' }}">
+                    <li class="nav-item {{ request()->is('contact') ? 'active' : '' }}">
                         <a class="nav-link text-white" href="{{ route('contact.index') }}">Contact</a>
                     </li>
                     <li class="nav-item {{ request()->is('register*') ? 'active' : '' }}">
-                        <a class="nav-link text-white" href="{{ route('register.create') }}">Inscription</a>
+                        <a class="nav-link text-white" href="{{ route('register.index') }}">Inscription</a>
                     </li>
                     <li class="nav-item {{ request()->is('login*') ? 'active' : '' }}">
-                        <a class="nav-link text-white" href="{{ route('login.create') }}">Connexion</a>
+                        <a class="nav-link text-white" href="{{ route('login.index') }}">Connexion</a>
                     </li>
                     @auth
                         <li class="nav-item dropdown">
@@ -52,7 +52,7 @@
         </div>
     </nav>
 
-    <div class="container mt-4">
+    <div class="w-100 mt-0">
         @yield('content')
     </div>
 
@@ -62,8 +62,21 @@
             <span class="text-wite">© 2024 CarLocation - Tous droits réservés</span>
         </div>
     </footer>
+
+    <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 50) {
+                    $('.header').addClass('header-scrolled');
+                } else {
+                    $('.header').removeClass('header-scrolled');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

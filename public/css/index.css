@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    font-size: 22px ;
+    font-size: 22px ;;
 }
 
 .header{
@@ -14,4 +14,7 @@ body {
 }
 .color-bg {
     background-color: green !important;
+}
+.custom-carousel-item {
+    background: rgba(0, 0, 0, 0.5) !important; /* Fond noir transparent */
 }
