@@ -17,7 +17,7 @@
 
                                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Connexion</p>
 
-                                <form method="POST" action="{{ route('login.store') }}" class="mx-1 mx-md-4">
+                                <form method="POST" action="{{ route('login.store') }}" class="php-email-form">
                                     @csrf
 
                                     <!-- Form input group for Email -->
@@ -60,7 +60,7 @@
 
                                     <!-- Submit Button -->
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                        <button type="submit" class="btn btn-success btn-lg">Se Connecter</button>
+                                        <button type="submit" class="color-bg">Se Connecter</button>
                                     </div>
                                 </form>
 

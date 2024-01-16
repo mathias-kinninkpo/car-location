@@ -1,8 +1,8 @@
 @extends('base')
 
 @section('content')
-<section class="vh-auto mt-10" style="background-color: #eee;">
-    <div class="container h-auto m">
+<section class="vh-100 d-flex justify-content-center align-items-center" style="background-color: #eee;">
+    <div class="container mt-10">
         <div class="row d-flex justify-content-center align-items-center h-auto">
             <div class="col-lg-12 col-xl-11">
                 <div class="card text-black" style="border-radius: 25px;">
@@ -12,7 +12,7 @@
 
                                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Inscription</p>
 
-                                <form method="POST" action="{{ route('register.store') }}" class="mx-1 mx-md-4">
+                                <form method="POST" action="{{ route('register.store') }}" class="mx-1 mx-md-4 php-email-form">
                                     @csrf
 
                                     <!-- Form input group for Name -->
@@ -98,7 +98,7 @@
 
                                     <!-- Submit Button -->
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                        <button type="submit" class="btn btn-success btn-lg">S'inscrire</button>
+                                        <button type="submit" class="color-bg">S'inscrire</button>
                                     </div>
                                 </form>
 

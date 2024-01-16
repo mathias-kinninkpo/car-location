@@ -1,20 +1,8 @@
-body {
-    font-family: 'Arial', sans-serif;
-    font-size: 22px ;;
-}
 
-.header{
-    font-weight: bold;
-    background-color: green;
-    color: white;
-}
-.footer-bg {
-    background-color: #6f6e6e !important;
-    color: white !important;
-}
 .color-bg {
-    background-color: green !important;
-}
-.custom-carousel-item {
-    background: rgba(0, 0, 0, 0.5) !important; /* Fond noir transparent */
+    background: #68A4C4;
+    border: 0;
+    padding: 10px 24px;
+    color: #fff;
+    transition: 0.4s;
 }
