@@ -76,7 +76,7 @@
         </div>
     </header><!-- End Header -->
     
-    <div class="w-100 mt-0">
+    <div class="w-100 mt-20">
         @yield('content')
     </div>
 
