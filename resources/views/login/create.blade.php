@@ -2,10 +2,10 @@
 
 @section('content')
 <section class="vh-100 d-flex justify-content-center align-items-center" style="background-color: #eee;">
-    <div class="container h-auto">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-12 col-xl-11">
-                <div class="card text-black" style="border-radius: 25px;">
+                <div class="card text-black" style="border-radius: 25px; height: 70vh">
                     <div class="card-body p-md-5">
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-7 order-2 order-lg-1 d-flex align-items-center">
