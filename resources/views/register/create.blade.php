@@ -12,7 +12,11 @@
 
                                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Inscription</p>
 
-                                <form method="POST" action="{{ route('register.store') }}" class="mx-1 mx-md-4 php-email-form">
+                                @if(session('success'))
+                                    <div class="alert alert-success">{{ session('success') }}</div>
+                                @endif
+
+                                <form method="POST" action="{{ route('register.store') }}" class="mx-1 mx-md-4">
                                     @csrf
 
                                     <!-- Form input group for Name -->
@@ -63,7 +67,7 @@
                                             </svg>
                                             <div class="form-outline flex-fill mb-0" style="margin-left: 20px">
                                                 <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" required />
-                                                @error('password')
+                                                @error('password')Connection
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -95,7 +99,11 @@
                                             </label>
                                         </div>
                                     </div>
-
+                                    <div class="my-3">
+                                        <div class="loading">Patientez...</div>
+                                        <div class="error-message"></div>
+                                        <div class="sent-message">Inscription réussi</div>
+                                    </div>
                                     <!-- Submit Button -->
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                         <button type="submit" class="color-bg">S'inscrire</button>
@@ -114,3 +122,4 @@
     </div>
 </section>
 @endsection
+

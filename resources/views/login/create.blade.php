@@ -17,7 +17,7 @@
 
                                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Connexion</p>
 
-                                <form method="POST" action="{{ route('login.store') }}" class="php-email-form">
+                                <form method="POST" action="{{ route('login.store') }}">
                                     @csrf
 
                                     <!-- Form input group for Email -->
@@ -56,6 +56,11 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="my-3">
+                                        <div class="loading">Patientez...</div>
+                                        <div class="error-message"></div>
+                                        <div class="sent-message">Connection réussi</div>
                                     </div>
 
                                     <!-- Submit Button -->
