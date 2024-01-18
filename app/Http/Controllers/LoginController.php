@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -31,18 +32,24 @@ class LoginController extends Controller
         return view("login.create")->with(['message' => $message]);
     }
 
-    public function create(Request $request){
-        
-        $data = [
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
-        ];
-        dd($data);
-        // return User::create([
-        //     'name' => $request->input("name"),
-        //     'email' => $request->input('email'),
-        //     'password' => Hash::make($request->input('password')),
-        // ]);
+    public function create(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('home'); 
+        }
+
+        return back()->withErrors(['email' => 'Identifiants invalides']); 
+    }
+
+    public function destroy(){
+
+        return redirect('/login')->with(Auth::logout());
     }
 
 }

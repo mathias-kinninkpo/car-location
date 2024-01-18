@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -18,10 +18,13 @@ class RegisterController extends Controller
 
     public function __construct()
     {
-        // $this->middleware('guest');
+        $this->middleware('guest')->except([
+            'logout', '/profile', '/', '/register'
+        ]);
     }
 
-    protected function validator(array $data)
+
+    public function validator(array $data)
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
@@ -32,12 +35,23 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
-        dd($request);
-        // return User::create([
-        //     'name' => $request->input('name'),
-        //     'email' => $request['email'],
-        //     'password' => Hash::make($request['password']),
-        // ]);
+        
+        $request->validate([
+            'name' => 'required|string|max:250',
+            'email' => 'required|email|max:250|unique:users',
+            'password' => 'required|min:8|confirmed'
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
+
+        $credentials = $request->only('email', 'password');
+        Auth::attempt($credentials);
+        $request->session()->regenerate();
+        return redirect('/home')->withSuccess('You have successfully registered & logged in!');
     }
 
     public function index()

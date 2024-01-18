@@ -52,26 +52,39 @@
                     <li class="{{ request()->is('contact') ? 'active' : '' }}">
                         <a href="{{ route('contact.index') }}">Contact</a>
                     </li>
-                    <li class="{{ request()->is('register*') ? 'active' : '' }}">
-                        <a href="{{ route('register.index') }}">Inscription</a>
-                    </li>
-                    <li class="{{ request()->is('login*') ? 'active' : '' }}">
-                        <a href="{{ route('login.index') }}">Connexion</a>
-                    </li>
+            
+                    @guest
+                        <li class="{{ request()->is('register*') ? 'active' : '' }}">
+                            <a href="{{ route('register.index') }}">Inscription</a>
+                        </li>
+                        <li class="{{ request()->is('login*') ? 'active' : '' }}">
+                            <a href="{{ route('login.index') }}">Connexion</a>
+                        </li>
+                    @endguest
+            
                     @auth
                         <li class="dropdown">
-                            <a href="{{ route('users.index') }}" class="active">
+                            <a href="" class="active">
                                 Profil <i class="bi bi-chevron-down"></i>
                             </a>
                             <ul>
-                                <li><a href="#">Voir</a></li>
-                                <li><a href="#">Éditer</a></li>
+                                <li><a href="{{ route('profile.index') }}">Voir</a></li>
+                                <li><a href="{{ route('users.index') }}">Éditer</a></li>
                             </ul>
+                        </li>
+                        <li>
+                            <a href="{{ route('logout') }}">
+                                {{-- <form action="{{ route('logout') }}" method="post"> --}}
+                                    {{-- @csrf --}}
+                                <button type="submit" style="background: none; border: none; color:white">Déconnexion</button>
+                                {{-- </form> --}}
+                            </a>
                         </li>
                     @endauth
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
+            
     
         </div>
     </header><!-- End Header -->

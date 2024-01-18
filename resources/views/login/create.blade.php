@@ -57,12 +57,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="my-3">
-                                        <div class="loading">Patientez...</div>
-                                        <div class="error-message"></div>
-                                        <div class="sent-message">Connection réussi</div>
-                                    </div>
-
                                     <!-- Submit Button -->
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                         <button type="submit" class="color-bg">Se Connecter</button>
