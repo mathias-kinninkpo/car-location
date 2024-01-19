@@ -47,28 +47,28 @@
     
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li class="{{ request()->is('/') ? 'active' : '' }}">
-                        <a href="{{ route('home') }}">Accueil</a>
+                    <li>
+                        <a href="{{ route('home') }}" class="{{ request()->is('/') ? 'active' : '' }}">Accueil</a>
                     </li>
-                    <li class="{{ request()->is('cars*') ? 'active' : '' }}">
-                        <a href="{{ route('cars.index') }}">Voitures</a>
+                    <li>
+                        <a href="{{ route('cars.index') }}" class="{{ request()->is('cars*') ? 'active' : '' }}">Voitures</a>
                     </li>
-                    <li class="{{ request()->is('contact') ? 'active' : '' }}">
-                        <a href="{{ route('contact.index') }}">Contact</a>
+                    <li>
+                        <a href="{{ route('contact.index') }}" class="{{ request()->is('contact') ? 'active' : '' }}">Contact</a>
                     </li>
             
                     @guest
-                        <li class="{{ request()->is('register*') ? 'active' : '' }}">
-                            <a href="{{ route('register.index') }}">Inscription</a>
+                        <li>
+                            <a href="{{ route('register.index') }}" class="{{ request()->is('register*') ? 'active' : '' }}">Inscription</a>
                         </li>
-                        <li class="{{ request()->is('login*') ? 'active' : '' }}">
-                            <a href="{{ route('login.index') }}">Connexion</a>
+                        <li>
+                            <a href="{{ route('login.index') }}" class="{{ request()->is('login*') ? 'active' : '' }}">Connexion</a>
                         </li>
                     @endguest
             
                     @auth
-                        <li class="{{ request()->is('profile*') ? 'active' : '' }}">
-                            <a href="{{ route('profile.index') }}" class="active">
+                        <li>
+                            <a href="{{ route('profile.index') }}" class="{{ request()->is('profile*') ? 'active' : '' }}">
                                 Profil 
                             </a>
                         </li>

@@ -7,7 +7,7 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link " href="{{ route("profile.index") }}">
+                <a class="nav-link {{ request()->routeIs('profile.index') ? '' : 'collapsed' }}" href="{{ route("profile.index") }}">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
@@ -16,28 +16,28 @@
             <li class="nav-heading">Pages</li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route("profile.locations") }}">
+                <a class="nav-link {{ request()->routeIs('profile.locations') ? '' : 'collapsed' }}" href="{{ route("profile.locations") }}">
                     <i class="bi bi-car-front"></i>
                     <span>Locations</span>
                 </a>
             </li><!-- End Profile Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route("profile.cars") }}">
+                <a class="nav-link {{ request()->routeIs('profile.cars') ? '' : 'collapsed' }}" href="{{ route("profile.cars") }}">
                     <i class="bi bi-card-list"></i>
                     <span>Lister Voitures</span>
                 </a>
             </li><!-- End F.A.Q Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route("profile.new") }}">
+                <a class="nav-link {{ request()->routeIs('profile.new') ? '' : 'collapsed' }}" href="{{ route("profile.new") }}">
                     <i class="bi bi-plus-circle-fill"></i>
                     <span>Ajouter une voiture</span>
                 </a>
             </li><!-- End Contact Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route("profile.users") }}">
+                <a class="nav-link {{ request()->routeIs('profile.users') ? '' : 'collapsed' }}" href="{{ route("profile.users") }}">
                     <i class="bi bi-card-list"></i>
                     <span>Lister Utilisateurs</span>
                 </a>
@@ -53,7 +53,17 @@
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
+                    @if (request()->routeIs('profile.index'))
+                        <li class="breadcrumb-item active">Dashboard</li>  
+                    @elseif (request()->routeIs('profile.locations'))
+                        <li class="breadcrumb-item active">Locations</li>
+                    @elseif (request()->routeIs('profile.cars'))
+                        <li class="breadcrumb-item active">Voitures</li>
+                    @elseif (request()->routeIs('profile.users'))
+                        <li class="breadcrumb-item active">La liste des utilisateur</li>
+                    @else
+                        <li class="breadcrumb-item active">Ajouter une nouvelle voiture</li>
+                    @endif
                 </ol>
             </nav>
         </div><!-- End Page Title -->
