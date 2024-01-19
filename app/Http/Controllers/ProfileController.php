@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
+
+    // la page principale de profile
     public function index() 
     {
         $user = auth()->user();
@@ -25,28 +27,81 @@ class ProfileController extends Controller
         }
         
     }
-    public function detail() : View {
+    public function detail()  {
         return view('profile.profile-detail');
     }
 
-    public function listCars(){
 
+
+    /**
+     * listCars Lister toutes le voiture
+     *
+     * @return View
+     */
+    public function listCars() {
+        /**
+         * 
+         */
+        $user = auth()->user();
+
+        if (!$user){
+            return redirect('login');
+        }
+
+        $cars = Car::all();
+
+        return view("profile.cars")->with("cars", $cars);
     }
 
+
+    // lister les utilisateurs
     public function listUsers()  {
+
+        $user = auth()->user();
+
+        if (!$user){
+            return redirect('login');
+        }
         
     }
-    public function createCars(): View {
+
+
+    /**
+     * createCars - le view pour creer une voiture
+     *
+     * @return 
+     */
+    public function createCars() {
         
+        $user = auth()->user();
+
+        if (!$user){
+            return redirect('login');
+        }
+    
         return view('profile.new');
     }
 
+
+    // afficher toutes les locations
     public function locations(){
         
     }
 
-    public function storeCars(Request $request)
+    /**
+     * storeCars -sauvegarde une voiture ajouter
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function storeCars(Request $request) 
     {
+        $user = auth()->user();
+
+        if (!$user){
+            return redirect('login');
+        }
+
         $request->validate([
             'brand' => 'required|string',
             'model' => 'required|string',
@@ -71,6 +126,32 @@ class ProfileController extends Controller
         ]);
 
         return redirect('profile-newcar')->with('success', 'Voiture ajoutée avec succès.');
+    }
+
+    // editer une voiture
+    public function editCars()  {
+
+        $user = auth()->user();
+
+        if (!$user){
+            return redirect('login');
+        }
+        
+    }
+
+    // Sauvegarder une voiture editée
+    public function storeEditCars()  {
+    
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
+    public function deleteCar()  {
+
+
     }
 
 }

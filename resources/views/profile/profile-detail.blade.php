@@ -5,7 +5,7 @@
         <div class="col-xl-4">
             <div class="card">
                 <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-                    <img src="assets/img/profile-img.jpg" alt="Profil" class="rounded-circle">
+                    <img src="{{ $user->image ? $user->image : 'assets/img/profile-img.jpg' }}" alt="Profil" class="rounded-circle">
                     <h2>{{ $user->name }}</h2>
                     <h4 class="text-info">{{ $user->role == 'user' ? "Simple Utilisateur" : "Admin" }}</h4> <!-- Remplace "Web Designer" par la colonne 'role' du modèle Utilisateur -->
                     <div class="social-links mt-2">
@@ -88,7 +88,7 @@
                               <div class="row mb-3">
                                 <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Image de Profil</label>
                                 <div class="col-md-8 col-lg-9">
-                                  <img src="assets/img/profile-img.jpg" alt="Profil">
+                                  <img src="{{ $user->image ? $user->image : 'assets/img/profile-img.jpg' }}" alt="Profil">
                                   <div class="pt-2">
                                     <a href="#" class="btn btn-primary btn-sm" title="Télécharger une nouvelle image de profil"><i class="bi bi-upload"></i></a>
                                     <a href="#" class="btn btn-danger btn-sm" title="Supprimer mon image de profil"><i class="bi bi-trash"></i></a>
@@ -142,6 +142,13 @@
                                 <label for="Email" class="col-md-4 col-lg-3 col-form-label">E-mail</label>
                                 <div class="col-md-8 col-lg-9">
                                   <input name="email" type="email" class="form-control" id="Email" value="{{ $user->email }}">
+                                </div>
+                              </div>
+
+                              <div class="row mb-3">
+                                <label for="Email" class="col-md-4 col-lg-3 col-form-label">Adress</label>
+                                <div class="col-md-8 col-lg-9">
+                                  <input name="email" type="email" class="form-control" id="Email" value="{{ $user->address }}">
                                 </div>
                               </div>
           
