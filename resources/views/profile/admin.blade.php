@@ -32,7 +32,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route("profile.new") }}">
                     <i class="bi bi-plus-circle-fill"></i>
-                    <span>Créer Voiture</span>
+                    <span>Ajouter une voiture</span>
                 </a>
             </li><!-- End Contact Page Nav -->
 
