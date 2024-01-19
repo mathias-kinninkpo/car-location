@@ -39,7 +39,7 @@
                     <div class="tab-content pt-2">
                         <div class="tab-pane fade show active profile-overview" id="profile-overview">
                             <h5 class="card-title">À propos</h5>
-                            <p class="small fst-italic">Je suis un simple utilisateur sur ce site et chauffeur qui emprunte les voitures</p> <!-- Utilise la colonne 'about' du modèle Utilisateur -->
+                            <p class="small fst-italic">{{ $user->about }}</p> <!-- Utilise la colonne 'about' du modèle Utilisateur -->
 
                             <h5 class="card-title">Détails du Profil</h5>
 
@@ -50,7 +50,7 @@
 
                             <div class="row mb-3">
                                 <div class="col-lg-3 col-md-4 label font-weight-bold" style="font-weight: bold">Entreprise</div>
-                                <div class="col-lg-9 col-md-8 font-weight-bold">Car Location</div>
+                                <div class="col-lg-9 col-md-8 font-weight-bold">{{ $user->job }}</div>
                             </div>
 
                             <div class="row mb-3">
@@ -72,6 +72,14 @@
                                 <div class="col-lg-3 col-md-4 label font-weight-bold" style="font-weight: bold">E-mail</div>
                                 <div class="col-lg-9 col-md-8 font-weight-bold">{{ $user->email }}</div>
                             </div>
+
+
+                          <div class="row mb-3">
+                            <div class="col-lg-3 col-md-4 label font-weight-bold" style="font-weight: bold">Téléphone</div>
+                            <div class="col-lg-9 col-md-8 font-weight-bold">{{ $user->phone }}</div>
+                          </div>
+
+                        
                         </div>
                         <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
@@ -98,82 +106,47 @@
                               <div class="row mb-3">
                                 <label for="about" class="col-md-4 col-lg-3 col-form-label">À propos</label>
                                 <div class="col-md-8 col-lg-9">
-                                  <textarea name="about" class="form-control" id="about" style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
+                                  <textarea name="about" class="form-control" id="about" style="height: 100px">{{ $user->about }}</textarea>
                                 </div>
                               </div>
           
                               <div class="row mb-3">
                                 <label for="company" class="col-md-4 col-lg-3 col-form-label">Entreprise</label>
                                 <div class="col-md-8 col-lg-9">
-                                  <input name="company" type="text" class="form-control" id="company" value="Lueilwitz, Wisoky and Leuschke">
+                                  <input name="company" type="text" class="form-control" id="company" value="{{ $user->enterprise }}">
                                 </div>
                               </div>
           
                               <div class="row mb-3">
                                 <label for="Job" class="col-md-4 col-lg-3 col-form-label">Emploi</label>
                                 <div class="col-md-8 col-lg-9">
-                                  <input name="job" type="text" class="form-control" id="Job" value="Web Designer">
+                                  <input name="job" type="text" class="form-control" id="Job" value="{{ $user->job }}">
                                 </div>
                               </div>
           
                               <div class="row mb-3">
                                 <label for="Country" class="col-md-4 col-lg-3 col-form-label">Pays</label>
                                 <div class="col-md-8 col-lg-9">
-                                  <input name="country" type="text" class="form-control" id="Country" value="USA">
-                                </div>
-                              </div>
-          
-                              <div class="row mb-3">
-                                <label for="Address" class="col-md-4 col-lg-3 col-form-label">Adresse</label>
-                                <div class="col-md-8 col-lg-9">
-                                  <input name="address" type="text" class="form-control" id="Address" value="A108 Adam Street, New York, NY 535022">
+                                  <input name="country" type="text" class="form-control" id="Country" value="{{ $user->country }}">
                                 </div>
                               </div>
           
                               <div class="row mb-3">
                                 <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Téléphone</label>
                                 <div class="col-md-8 col-lg-9">
-                                  <input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 x29071">
+                                  <input name="phone" type="text" class="form-control" id="Phone" value="{{ $user->phone }}">
                                 </div>
                               </div>
           
                               <div class="row mb-3">
                                 <label for="Email" class="col-md-4 col-lg-3 col-form-label">E-mail</label>
                                 <div class="col-md-8 col-lg-9">
-                                  <input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com">
-                                </div>
-                              </div>
-          
-                              <div class="row mb-3">
-                                <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Profil Twitter</label>
-                                <div class="col-md-8 col-lg-9">
-                                  <input name="twitter" type="text" class="form-control" id="Twitter" value="https://twitter.com/#">
-                                </div>
-                              </div>
-          
-                              <div class="row mb-3">
-                                <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Profil Facebook</label>
-                                <div class="col-md-8 col-lg-9">
-                                  <input name="facebook" type="text" class="form-control" id="Facebook" value="https://facebook.com/#">
-                                </div>
-                              </div>
-          
-                              <div class="row mb-3">
-                                <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Profil Instagram</label>
-                                <div class="col-md-8 col-lg-9">
-                                  <input name="instagram" type="text" class="form-control" id="Instagram" value="https://instagram.com/#">
-                                </div>
-                              </div>
-          
-                              <div class="row mb-3">
-                                <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Profil Linkedin</label>
-                                <div class="col-md-8 col-lg-9">
-                                  <input name="linkedin" type="text" class="form-control" id="Linkedin" value="https://linkedin.com/#">
+                                  <input name="email" type="email" class="form-control" id="Email" value="{{ $user->email }}">
                                 </div>
                               </div>
           
                               <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Enregistrer les Modifications</button>
+                                <button type="submit" class="color-bg">Enregistrer les Modifications</button>
                               </div>
                             </form><!-- Fin Formulaire de Modification du Profil -->
           
@@ -215,7 +188,7 @@
                               </div>
           
                               <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Enregistrer les Modifications</button>
+                                <button type="submit" class="color-bg">Enregistrer les Modifications</button>
                               </div>
                             </form><!-- Fin Formulaire des Paramètres -->
           
@@ -247,7 +220,7 @@
                               </div>
           
                               <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Changer le Mot de Passe</button>
+                                <button type="submit" class="color-bg">Changer le Mot de Passe</button>
                               </div>
                             </form><!-- Fin Formulaire de Changement de Mot de Passe -->
                         </div>
