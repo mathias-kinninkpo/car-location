@@ -24,6 +24,10 @@
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -63,21 +67,14 @@
                     @endguest
             
                     @auth
-                        <li class="dropdown">
-                            <a href="" class="active">
-                                Profil <i class="bi bi-chevron-down"></i>
+                        <li class="{{ request()->is('profile*') ? 'active' : '' }}">
+                            <a href="{{ route('profile.index') }}" class="active">
+                                Profil 
                             </a>
-                            <ul>
-                                <li><a href="{{ route('profile.index') }}">Voir</a></li>
-                                <li><a href="{{ route('users.index') }}">Éditer</a></li>
-                            </ul>
                         </li>
                         <li>
                             <a href="{{ route('logout') }}">
-                                {{-- <form action="{{ route('logout') }}" method="post"> --}}
-                                    {{-- @csrf --}}
-                                <button type="submit" style="background: none; border: none; color:white">Déconnexion</button>
-                                {{-- </form> --}}
+                                Déconnexion
                             </a>
                         </li>
                     @endauth
@@ -89,13 +86,13 @@
         </div>
     </header><!-- End Header -->
     
-    <div class="w-100 mt-20">
+    <div>
         @yield('content')
     </div>
 
     
-  <!-- ======= Footer ======= -->
-  <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+    <!-- ======= Footer ======= -->
+    <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
 
     <div class="footer-newsletter">
         <div class="container">
@@ -188,9 +185,13 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/main1.js"></script>
 
 </body>
 </html>

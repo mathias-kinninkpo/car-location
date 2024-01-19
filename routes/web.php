@@ -48,10 +48,13 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register.s
 
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 Route::post('/login', [LoginController::class, 'create'])->name('login.store');
-
 Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
 
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+Route::get('/profile/cars', [ProfileController::class, 'listCars'])->name('profile.cars');
+Route::get('/profile/users', [ProfileController::class, 'listUsers'])->name('profile.users');
+Route::get('/profile/newcar', [ProfileController::class, 'createCars'])->name('profile.new');
+Route::get('/profile/locations', [ProfileController::class, 'locations'])->name('profile.locations');
 Route::post('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 
 
