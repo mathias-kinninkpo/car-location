@@ -129,18 +129,73 @@ class ProfileController extends Controller
     }
 
     // editer une voiture
-    public function editCars()  {
-
+    public function editCars($id) {
         $user = auth()->user();
-
-        if (!$user){
+    
+        if (!$user) {
             return redirect('login');
         }
         
+        $carId = $id;
+        $car = Car::findOrFail($carId);
+    
+        return view('profile.editcars')->with('car', $car);
     }
+    
 
-    // Sauvegarder une voiture editée
-    public function storeEditCars()  {
+    /**
+     *  storeEditCars -sauvegarde de la voiture modifiée
+     */
+    public function storeEditCars(Request $request, $id)  {
+
+        $user = auth()->user();
+    
+        if (!$user) {
+            return redirect('login');
+        }
+
+        
+        $car = Car::findOrFail($id);
+
+        if ($car) {
+            
+            // validation de donnée
+            $request->validate([
+                'brand' => 'required|string',
+                'model' => 'required|string',
+                'year' => 'required|date',
+                'registration_number' => 'required|string',
+                'description' => 'required|string',
+                'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+            ]);
+
+
+            // Vérifiez si une nouvelle image a été téléchargée
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('images/cars', 'public');
+                $car->image = $imagePath;
+            } elseif ($request->has('old_image')) {
+
+            }
+
+            $car->update([
+                'brand' => $request->brand,
+                'model' => $request->model,
+                'year' => $request->year,
+                'registration_number' => $request->registration_number,
+                'description' => $request->description,
+            ]);
+        }
+
+
+    
+
+        $car->save();
+
+        return redirect('profile/editcar/' . $id)->with(['success' => 'Voiture modifiée avec succès.']);
+
+    
+        
     
     }
 
