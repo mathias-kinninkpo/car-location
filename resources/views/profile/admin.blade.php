@@ -1,10 +1,10 @@
 @extends("base")
 
 @section("content")
-    <!-- ======= Sidebar ======= -->
-    <aside id="sidebar" class="sidebar">
+    <!-- ======= Sidebar1 ======= -->
+    <aside id="sidebar1" class="sidebar1">
 
-        <ul class="sidebar-nav" id="sidebar-nav">
+        <ul class="sidebar1-nav" id="sidebar1-nav">
 
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('profile.index') ? '' : 'collapsed' }}" href="{{ route("profile.index") }}">
@@ -45,7 +45,7 @@
 
         </ul>
 
-    </aside><!-- End Sidebar-->
+    </aside><!-- End Sidebar1-->
 
     <main id="main" class="main main1">
         <div class="pagetitle">

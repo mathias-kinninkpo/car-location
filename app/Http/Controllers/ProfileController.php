@@ -21,10 +21,10 @@ class ProfileController extends Controller
         }
 
         if ($user->role == 'admin') {
-            return view('profile.profile-detail');
+            return view('profile.profile-detail')->with(["user" => $user]);
         }
         else{
-            return view('profile.profile-detail')->with(["user" => $user]);
+            return view('profile.user')->with(["user" => $user]);
         }
         
     }
