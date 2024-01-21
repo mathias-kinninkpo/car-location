@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\View\View;
 use App\Models\Car;
+use App\Models\Rental;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -95,6 +96,14 @@ class ProfileController extends Controller
     // afficher toutes les locations
     public function locations(){
         
+        $user = auth()->user();
+
+        if (!$user){
+            return redirect('login');
+        }
+
+        $rentals = Rental::all();
+        return view('profile.locations')->with(['rentals' => $rentals]);
     }
 
     /**

@@ -10,7 +10,7 @@
             <div class="carousel-container">
                 <h2 class="animate__animated animate__fadeInDown">Bienvenue chez <span>Car Location</span></h2>
                 <p class="animate__animated animate__fadeInUp">Explorez notre large gamme de voitures à louer. Trouvez la voiture parfaite pour vos besoins de déplacement. Réservez en ligne dès maintenant.</p>
-                <a href="#" class="btn-get-started animate__animated animate__fadeInUp">En savoir plus</a>
+                <a href="{{ route('cars.index') }}" class="btn-get-started animate__animated animate__fadeInUp">Explorer</a>
             </div>
         </div>
 
@@ -19,7 +19,7 @@
             <div class="carousel-container">
                 <h2 class="animate__animated animate__fadeInDown">Découvrez le confort de conduire avec Car Location</h2>
                 <p class="animate__animated animate__fadeInUp">Trouvez la voiture idéale qui correspond à votre style et à votre budget. Profitez d'une expérience de conduite sans tracas avec Car Location.</p>
-                <a href="#" class="btn-get-started animate__animated animate__fadeInUp">En savoir plus</a>
+                <a href="{{ route('cars.index') }}" class="btn-get-started animate__animated animate__fadeInUp">Explorer</a>
             </div>
         </div>
 
@@ -28,7 +28,7 @@
             <div class="carousel-container">
                 <h2 class="animate__animated animate__fadeInDown">Choix varié, tarifs compétitifs</h2>
                 <p class="animate__animated animate__fadeInUp">Car Location offre une large sélection de voitures de qualité à des tarifs compétitifs. Trouvez la voiture parfaite pour chaque occasion.</p>
-                <a href="#" class="btn-get-started animate__animated animate__fadeInUp">En savoir plus</a>
+                <a href="{{ route('cars.index') }}" class="btn-get-started animate__animated animate__fadeInUp">Explorer</a>
             </div>
         </div>
 

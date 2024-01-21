@@ -39,7 +39,7 @@
                                                 @if($car->availability)
                                                     <i class="bi bi-check-circle" style="color: green;"></i> <span style="color: green;">Disponible</span>
                                                 @else
-                                                    <i class="bi bi-x-circle" style="color: red;"></i> <span style="color: red;">Non disponible</span>
+                                                    <i class="bi bi-x-circle" style="color: red;"></i> <span style="color: red;">Non Dispo</span>
                                                 @endif
                                             </li>
                                             <li class="d-flex align-items-center"><i class="bi bi-calendar"></i> {{ $car->year }}</li>
@@ -50,7 +50,7 @@
                                             {{ Str::limit($car->description, 200) }}
                                         </p>
                                         <div class="read-more">
-                                            <a href="{{ route('cars.show', ['car' => $car->id]) }}">Reserver</a>
+                                            <a href="{{ route('cars.show', ['car' => $car->id]) }}">@if($car->availability) Réserver @else Voir plus @endif</a>
                                         </div>
                                     </div>
                                 </article><!-- End blog entry -->

@@ -30,6 +30,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Routes pour les voitures
 Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
 Route::get('/cars/{car}', [CarController::class, 'show'])->name('cars.show');
+Route::post('/cars/{car}', [CarController::class, 'store'])->name('cars.store');
+
 
 // Routes pour les individus
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
