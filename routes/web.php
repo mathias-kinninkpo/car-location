@@ -53,13 +53,15 @@ Route::get('/logout', [LoginController::class, 'destroy'])->name('logout');
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
 Route::get('/profile/cars', [ProfileController::class, 'listCars'])->name('profile.cars');
 Route::get('/profile/users', [ProfileController::class, 'listUsers'])->name('profile.users');
+Route::post('/profile/grantadmin/{id}', [ProfileController::class, 'grant'])->name('profile.grantadmin');
+Route::post('/profile/revoqueadmin/{id}', [ProfileController::class, 'revoque'])->name('profile.revoqueadmin');
 
 Route::get('/profile/newcar', [ProfileController::class, 'createCars'])->name('profile.new');
 Route::post('/profile/newcar', [ProfileController::class, 'storeCars'])->name('profile.newstore');
 
 Route::get('/profile/editcar/{id}', [ProfileController::class, 'editCars'])->name('profile.editcar');
 Route::post('/profile/editcar/{id}', [ProfileController::class, 'storeEditCars'])->name('profile.editcarstore');
-Route::post('/profile/deletecar', [ProfileController::class, 'deleteCar'])->name('profile.deletecar');
+Route::delete('/profile/deletecar/{id}', [ProfileController::class, 'deleteCar'])->name('profile.deletecar');
 
 Route::get('/profile/locations', [ProfileController::class, 'locations'])->name('profile.locations');
 Route::post('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

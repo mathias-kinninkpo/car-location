@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\View\View;
 use App\Models\Car;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -54,14 +55,22 @@ class ProfileController extends Controller
     }
 
 
-    // lister les utilisateurs
-    public function listUsers()  {
+    /**
+     * listUsers function - Affiches toutes les utilisateur
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function listUsers(Request $request)  {
 
         $user = auth()->user();
 
         if (!$user){
             return redirect('login');
         }
+
+        $users = User::all();
+        return view('profile.list-users')->with(['users' => $users, 'userloged' => $user]);
         
     }
 
@@ -125,7 +134,7 @@ class ProfileController extends Controller
             'image' => $imageName,
         ]);
 
-        return redirect('profile-newcar')->with('success', 'Voiture ajoutée avec succès.');
+        return redirect('profile/newcar')->with('success', 'Voiture ajoutée avec succès.');
     }
 
     // editer une voiture
@@ -204,9 +213,57 @@ class ProfileController extends Controller
      *
      * @return void
      */
-    public function deleteCar()  {
+    public function deleteCar($id)  {
 
+        $car = Car::findOrFail($id);
 
+        if($car){
+
+            $name = $car->brand;
+            $car->delete();
+            return redirect('/profile/cars')->with(['success' => 'La voiture '. $name .' est supprimé succèss']);
+
+        }
+        return redirect('/profile/cars')->with(['danger' => 'Une erreur est survenue']);
+    }
+
+    /**
+     * Grant function - accord le privilège admin à un simple utilisateur
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function grant($id)  {
+        
+        $user = User::findOrFail($id);
+
+        if($user){
+            $name = $user->name;
+            $user->role = 'admin';
+            $user->save();
+            return redirect('/profile/users')->with(['success' =>  'L\'utilisateur ' . $name .' est nommé admin avec succès']);
+
+        }
+        return redirect('/profile/users')->with(['danger' => 'Une erreur est survenue']);
+    }
+
+    /**
+     * reoveque function - revoque le droit admin
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function revoque($id) {
+        
+        $user = User::findOrFail($id);
+
+        if($user){
+            $user->role = "user";
+            $user->save();
+            return redirect('/profile/users')->with(['success' => 'L\'utilisateur '. $user->name .' n\'est plus admin']);
+
+        }
+        return redirect('/profile/users')->with(['danger' => 'Une erreur est survenue']);
     }
 
 }

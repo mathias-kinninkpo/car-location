@@ -34,9 +34,9 @@
                     <td>{{ $car->description }}</td>
                     <td>
                         <a href="{{ route('profile.editcar', ['id' => $car->id]) }}" class="color-bg"><i class="bi bi-pencil-square"></i></a>
-                        <form action="{{ route('profile.deletecar', ['id' => $car->id]) }}" method="post" style="display:inline;">
+                        <form action="{{ route('profile.deletecar', ['id' => $car->id]) }}" method="POST" style="display:inline;">
                             @csrf
-                            @method('delete')
+                            @method('DELETE')
                             <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                         </form>
                     </td>
