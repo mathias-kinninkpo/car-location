@@ -66,6 +66,7 @@ Route::post('/profile/editcar/{id}', [ProfileController::class, 'storeEditCars']
 Route::delete('/profile/deletecar/{id}', [ProfileController::class, 'deleteCar'])->name('profile.deletecar');
 
 Route::get('/profile/locations', [ProfileController::class, 'locations'])->name('profile.locations');
+Route::post('/profile/locations/{id}', [ProfileController::class, 'rendre'])->name('profile.rendre');
 Route::post('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 
 

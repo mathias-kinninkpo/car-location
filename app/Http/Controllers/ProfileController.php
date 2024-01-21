@@ -106,6 +106,29 @@ class ProfileController extends Controller
         return view('profile.locations')->with(['rentals' => $rentals]);
     }
 
+    public function rendre($id) {
+
+        $rental = Rental::findOrFail($id) ;
+
+        if($rental) {
+
+            $car_id = $rental->car_id ;
+
+            $car = Car::findOrFail($car_id);
+
+            if ($car) {
+
+                $car->availability = true ;
+                $rental->status = 'returned';
+                $car->save();
+                $rental->save();
+                return redirect('profile/locations')->with('success', 'La voiture' . $car->brand . ' ' . $car->model . 'est marquée rendue');
+            }
+        }
+
+        
+    }
+
     /**
      * storeCars -sauvegarde une voiture ajouter
      *
