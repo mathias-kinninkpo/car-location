@@ -20,12 +20,13 @@ class ProfileController extends Controller
         if (!$user){
             return redirect('login');
         }
+        $userRentals = Rental::where('user_id', auth()->user()->id)->get();
 
         if ($user->role == 'admin') {
-            return view('profile.profile-detail')->with(["user" => $user]);
+            return view('profile.profile-detail')->with(["user" => $user, 'userRentals' => $userRentals]);
         }
         else{
-            return view('profile.user')->with(["user" => $user]);
+            return view('profile.user')->with(["user" => $user, 'userRentals' => $userRentals]);
         }
         
     }
@@ -149,7 +150,7 @@ class ProfileController extends Controller
             'year' => 'required|date',
             'registration_number' => 'required|string',
             'description' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5048',
+            'image' => 'required|image',
         ]);
 
         // Gestion de l'upload de l'image

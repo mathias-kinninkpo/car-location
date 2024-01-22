@@ -30,7 +30,7 @@
                     <td>{{ $car->model }}</td>
                     <td>{{ $car->year }}</td>
                     <td>{{ $car->registration_number }}</td>
-                    <td>{{ $car->availability ? 'Disponible' : 'Non disponible' }}</td>
+                    <td style="color: {{ $car->availability ? 'green' : 'red' }}">{{ $car->availability ? 'Disponible' : 'Non disponible' }}</td>
                     <td>{{ $car->description }}</td>
                     <td>
                         <a href="{{ route('profile.editcar', ['id' => $car->id]) }}" class="color-bg"><i class="bi bi-pencil-square"></i></a>
